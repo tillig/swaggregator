@@ -1,0 +1,25 @@
+{
+  "name": "swaggregator",
+  "version": "0.1.0",
+  "description": "Swagger document aggregator for API gateway.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node ./index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+http://pddv-tfs.corp.checkfree.com:8080/tfs/OLB/CORI/_git/api-gateway"
+  },
+  "author": "Fiserv",
+  "license": "ISC",
+  "dependencies": {
+    "config": "^1.26.2",
+    "express": "^4.15.4",
+    "q": "^1.5.0",
+    "request": "^2.81.0"
+  },
+  "engines": {
+    "node": "4.8.4",
+    "npm": "2.15.11"
+  }
+}

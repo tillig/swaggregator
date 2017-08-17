@@ -1,0 +1,17 @@
+{
+  "documents": [
+    {
+      "id": "api1",
+      "swagger_url": "https://url.to.first/swagger.json"
+    },
+    {
+      "id": "api2",
+      "swagger_url": "https://url.to.second/swagger.json",
+      "path_rewrite": {
+        "^/sub-path-to-remove/": "",
+        "(.*)/accts/(.*)": "$1/accounts/$2"
+      }
+    }
+  ],
+  "info": { "title": "My REST API", "version": "1.0" }
+}

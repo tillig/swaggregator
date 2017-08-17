@@ -1,0 +1,4 @@
+---
+  applications:
+    - name: swaggregator
+      buildpack: https://github.com/cloudfoundry/nodejs-buildpack
