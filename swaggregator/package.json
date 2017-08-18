@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+http://pddv-tfs.corp.checkfree.com:8080/tfs/OLB/CORI/_git/api-gateway"
+    "url": "git+https://github.com/tillig/swaggregator.git"
   },
   "author": "Travis Illig",
   "license": "ISC",
