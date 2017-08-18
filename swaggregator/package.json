@@ -10,7 +10,7 @@
     "type": "git",
     "url": "git+http://pddv-tfs.corp.checkfree.com:8080/tfs/OLB/CORI/_git/api-gateway"
   },
-  "author": "Fiserv",
+  "author": "Travis Illig",
   "license": "ISC",
   "dependencies": {
     "config": "^1.26.2",
