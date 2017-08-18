@@ -29,6 +29,8 @@ var getSwaggerDocuments = function(settings){
 
 		// Turned off cert validation because a lot of internal
 		// and self-signed certs are in place behind the gateway.
+		// Assumes the PCF router is handling the "real SSL" in
+		// front of the gateway.
 		var docRequest = {
 			"rejectUnauthorized": false,
 			"url": setting.swagger_url
@@ -50,7 +52,7 @@ var getSwaggerDocuments = function(settings){
 
 // Recursively updates a JSON object
 // objectToSearch = object to recurse and update
-// updater = function that takes the object and performs updates/checks if any
+// updater = function that takes the object and performs updates/checks if needed
 var updateJsonObject = function(objectToSearch, updater){
 	if (!objectToSearch) {
 		return;
@@ -77,9 +79,6 @@ var updateJsonObject = function(objectToSearch, updater){
 	}
 }
 
-// TODO: Hide the "Explore" box in the Swagger header.
-// TODO: Configure OAuth for the UI.
-// TODO: Configure logo and header for the UI.
 app.get('/swagger', function(req, res) {
 	res.redirect("/swagger/ui");
 });
