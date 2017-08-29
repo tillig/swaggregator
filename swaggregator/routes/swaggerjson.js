@@ -1,25 +1,8 @@
-// Code based on swagger-combined from
-// https://github.com/thanhson1085/swagger-combined/
-// Updated to support PCF and not proxy data; should
-// be hosted behind the API gateway instead.
 var config = require('config');
 var express = require('express');
-var app = express();
+var router = express.Router();
 var q = require('q');
 var request = require('request');
-
-// Use X-Forwarded-* headers.
-app.enable("trust proxy");
-
-// Turn off the Express header.
-app.disable("x-powered-by");
-
-// Add CORS header middleware.
-app.use(function(req, res, next) {
-	res.header("Access-Control-Allow-Origin", "*");
-	res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization");
-	next();
-});
 
 var allSwaggerSettings = config.get("documents");
 var getSwaggerDocuments = function(settings){
@@ -29,8 +12,6 @@ var getSwaggerDocuments = function(settings){
 
 		// Turned off cert validation because a lot of internal
 		// and self-signed certs are in place behind the gateway.
-		// Assumes the PCF router is handling the "real SSL" in
-		// front of the gateway.
 		var docRequest = {
 			"rejectUnauthorized": false,
 			"url": setting.swagger_url
@@ -52,7 +33,7 @@ var getSwaggerDocuments = function(settings){
 
 // Recursively updates a JSON object
 // objectToSearch = object to recurse and update
-// updater = function that takes the object and performs updates/checks if needed
+// updater = function that takes the object and performs updates/checks if any
 var updateJsonObject = function(objectToSearch, updater){
 	if (!objectToSearch) {
 		return;
@@ -79,11 +60,7 @@ var updateJsonObject = function(objectToSearch, updater){
 	}
 }
 
-app.get('/swagger', function(req, res) {
-	res.redirect("/swagger/ui");
-});
-app.use('/swagger/ui', express.static(__dirname + '/static/'));
-app.get('/swagger/ui/swagger.json', function(req, res) {
+router.get('/', function(req, res) {
 	var schemes = [ req.protocol ];
 	getSwaggerDocuments(allSwaggerSettings).then(function(allDocuments){
 		var baseDocument = {
@@ -153,15 +130,19 @@ app.get('/swagger/ui/swagger.json', function(req, res) {
 			return accumulator;
 		}, false);
 
+		// If OAuth is configured, set the 'oauth2' security definition
+		// to be the value in configuration.
+		combinedDocument.securityDefinitions = {};
+		var oauth = config.get("oauth");
+		if(oauth && oauth.securityDefinition) {
+			console.log("Adding oauth2 security definition.");
+			combinedDocument.securityDefinitions["oauth2"] = oauth.securityDefinition;
+		}
+
 		console.log("Sending complete aggregate Swagger doc.");
 		res.setHeader('Content-Type', 'application/json');
 		res.send(JSON.stringify(combinedDocument));
 	});
 });
 
-var port = process.env.PORT || 3000;
-var server = app.listen(port, function () {
-	var host = server.address().address;
-	var port = server.address().port;
-	console.log("Swaggregator now listening on http://%s:%s", host, port);
-});
+module.exports = router;

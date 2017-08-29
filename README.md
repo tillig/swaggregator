@@ -48,6 +48,47 @@ Where:
 
 **If multiple operation paths overlap, last one in wins.**
 
+# Swagger Metadata
+
+The `default.json` has an `info` node that modifies the overall metadata for the Swagger JSON that is generated. The `title` element also is used as the title in the Swagger HTML view.
+
+```json
+"info": {
+  "title": "My REST API",
+  "version": "1.0"
+}
+```
+
+# OAuth 2
+
+The `default.json` has an `oauth` node that allows you to define OAuth support for your aggregate Swagger doc. Individual Swagger docs that contribute to the aggregate don't contribute security definitions - that's controlled at the top.
+
+If you don't want `oauth` support, remove the `oauth` node from the `default.json`.
+
+```json
+"oauth": {
+  "clientId": "my-client-id",
+  "clientSecret": "my-client-secret",
+  "realm": "my-oauth-realm",
+  "appName": "Swagger UI",
+  "securityDefinition": {
+    "authorizationUrl": "https://my-identity-server/connect/authorize",
+    "flow": "implicit",
+    "scopes": {
+      "api": "API Access"
+    },
+    "tokenUrl": "https://my-identity-server/connect/token",
+    "type": "oauth2"
+  }
+}
+```
+
+`clientId`, `clientSecret`, and `realm` are used depending on the `flow` for OAuth you define. You may omit them if they're not required.
+
+If `appName` is omitted it defaults to `Swagger UI`.
+
+The `securityDefinition` is based on [the Swagger 2.0 `securityDefinitions` object](https://github.com/OAI/OpenAPI-Specification/blob/master/versions/2.0.md#securityDefinitionsObject). If present, this will be added as the only security definition entry and will have an ID `oauth2`.
+
 # License
 
 Swaggregator code is licensed under the MIT License - do what you want. The `static` folder used to render UI is from the [swagger-ui project](https://github.com/swagger-api/swagger-ui) licensed under Apache 2.0.

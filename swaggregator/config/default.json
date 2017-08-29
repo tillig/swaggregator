@@ -13,5 +13,23 @@
       }
     }
   ],
-  "info": { "title": "My REST API", "version": "1.0" }
+  "info": {
+    "title": "My REST API",
+    "version": "1.0"
+  },
+  "oauth": {
+    "clientId": "my-client-id",
+    "clientSecret": "my-client-secret",
+    "realm": "my-oauth-realm",
+    "appName": "Swagger UI",
+    "securityDefinition": {
+      "authorizationUrl": "https://my-identity-server/connect/authorize",
+      "flow": "implicit",
+      "scopes": {
+        "api": "API Access"
+      },
+      "tokenUrl": "https://my-identity-server/connect/token",
+      "type": "oauth2"
+    }
+  }
 }

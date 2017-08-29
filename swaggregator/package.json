@@ -1,10 +1,10 @@
 {
   "name": "swaggregator",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Swagger document aggregator for API gateway.",
-  "main": "index.js",
+  "main": "./bin/www",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node ./bin/www"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,10 @@
   "license": "ISC",
   "dependencies": {
     "config": "^1.26.2",
+    "debug": "^3.0.1",
     "express": "^4.15.4",
+    "hbs": "^4.0.1",
+    "morgan": "^1.8.2",
     "q": "^1.5.0",
     "request": "^2.81.0"
   },

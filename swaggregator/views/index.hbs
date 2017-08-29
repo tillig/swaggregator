@@ -3,7 +3,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Swagger UI</title>
+  <title>{{title}}</title>
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700|Source+Code+Pro:300,600|Titillium+Web:400,600,700" rel="stylesheet">
   <link rel="stylesheet" type="text/css" href="./swagger-ui.css" >
   <link rel="icon" type="image/png" href="./favicon-32x32.png" sizes="32x32" />
@@ -71,7 +71,7 @@
 <script src="./swagger-ui-standalone-preset.js"> </script>
 <script>
 window.onload = function() {
-  
+
   // Build a system
   const ui = SwaggerUIBundle({
     url: "./swagger.json",
@@ -87,6 +87,26 @@ window.onload = function() {
     layout: "StandaloneLayout",
     validationUrl: null
   })
+
+  {{#if oauth}}
+  ui.initOAuth({
+    {{#if oauth.clientId}}
+    clientId: "{{oauth.clientId}}",
+    {{/if}}
+    {{#if oauth.clientSecret}}
+    clientSecret: "{{oauth.clientSecret}}",
+    {{/if}}
+    {{#if oauth.realm}}
+    realm: "{{oauth.realm}}",
+    {{/if}}
+    {{#if oauth.appName}}
+    appName: "{{oauth.appName}}"
+    {{/if}}
+    {{#unless oauth.appName}}
+    appName: "Swagger UI"
+    {{/unless}}
+  })
+  {{/if}}
 
   window.ui = ui
 }
