@@ -1,0 +1,7 @@
+.vscode/*
+bin/*
+config/*
+.editorconfig
+.gitconfig
+.npmignore
+manifest.yml

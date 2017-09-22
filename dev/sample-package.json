@@ -1,0 +1,19 @@
+{
+  "author": "Your Name",
+  "dependencies": {
+    "express": "^4.15.4",
+    "swaggregator": "git+https://github.com/tillig/swaggregator.git#v0.3.0"
+  },
+  "description": "Custom Swaggregator deployment.",
+  "engines": {
+    "node": "4.8.4",
+    "npm": "2.15.11"
+  },
+  "license": "ISC",
+  "main": "index.js",
+  "name": "swaggregator-deployment",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "version": "1.0.0"
+}

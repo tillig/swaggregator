@@ -29,10 +29,10 @@ app.use(function(req, res, next) {
 
 // Redirect people to get to the Swagger docs by default.
 app.get('/', function(req, res) {
-	res.redirect("/swagger/ui");
+	res.redirect("/swagger/ui/");
 });
 app.get('/swagger', function(req, res) {
-	res.redirect("/swagger/ui");
+	res.redirect("/swagger/ui/");
 });
 
 // Get the dynamic content first, otherwise use static content.

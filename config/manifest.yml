@@ -1,0 +1,4 @@
+---
+  applications:
+    - name: swaggregator
+      buildpack: nodejs_buildpack

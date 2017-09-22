@@ -3,6 +3,7 @@
 
 # Project specific files
 artifacts/
+*.tgz
 
 # User-specific files
 *.suo

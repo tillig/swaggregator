@@ -1,0 +1,32 @@
+{
+  "author": "Travis Illig",
+  "dependencies": {
+    "config": "^1.26.2",
+    "debug": "^3.0.1",
+    "express": "^4.15.4",
+    "hbs": "^4.0.1",
+    "morgan": "^1.8.2",
+    "q": "^1.5.0",
+    "request": "^2.81.0"
+  },
+  "description": "Swagger document aggregator for API gateway.",
+  "engines": {
+    "node": "4.8.4",
+    "npm": "2.15.11"
+  },
+  "keywords": [
+    "swagger",
+    "rest"
+  ],
+  "license": "ISC",
+  "main": "index.js",
+  "name": "swaggregator",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tillig/swaggregator.git"
+  },
+  "scripts": {
+    "start": "node ./dev/start.js"
+  },
+  "version": "0.3.0"
+}
