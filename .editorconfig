@@ -4,28 +4,11 @@
 ; VS Add-In: http://visualstudiogallery.msdn.microsoft.com/c8bccfe2-650c-4b42-bc5c-845e21f96328
 ; Sublime Text Add-In: https://github.com/sindresorhus/editorconfig-sublime#readme
 
-; Wildcards aren't used because there's a bug...
-; https://github.com/editorconfig/editorconfig-visualstudio/issues/21
-
 ; This is the default for the codeline.
 root = true
 
-; default - tab
 [*]
 end_of_line = CRLF
-indent_style = tab
+indent_style = space
+indent_size = 2
 trim_trailing_whitespace = true
-
-; space / 4
-[*.{config,cshtml,html,xml}]
-indent_style = space
-indent_size = 4
-
-; space / 2
-[*.{conf,csproj,json,ps1,psd1,psm1,resx}]
-indent_style = space
-indent_size = 2
-
-[NuGet.Config]
-indent_style = space
-indent_size = 2
