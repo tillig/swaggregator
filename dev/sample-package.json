@@ -2,12 +2,12 @@
   "author": "Your Name",
   "dependencies": {
     "express": "^4.15.4",
-    "swaggregator": "git+https://github.com/tillig/swaggregator.git#v0.3.0"
+    "swaggregator": "git+https://github.com/tillig/swaggregator.git#v0.5.0"
   },
   "description": "Custom Swaggregator deployment.",
   "engines": {
-    "node": "7.5.0",
-    "npm": "5.4.2"
+    "node": "8.3.0",
+    "npm": "5.3.0"
   },
   "license": "ISC",
   "main": "index.js",
