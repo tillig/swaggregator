@@ -23,12 +23,12 @@
     "realm": "my-oauth-realm",
     "appName": "Swagger UI",
     "securityDefinition": {
-      "authorizationUrl": "https://my-identity-server/connect/authorize",
+      "authorizationUrl": "https://my-identity-server/{{tenant_id}}/connect/authorize",
       "flow": "implicit",
       "scopes": {
         "api": "API Access"
       },
-      "tokenUrl": "https://my-identity-server/connect/token",
+      "tokenUrl": "https://my-identity-server/{{tenant_id}}/connect/token",
       "type": "oauth2"
     }
   }

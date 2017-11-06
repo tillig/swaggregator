@@ -49,12 +49,12 @@ Configuration should be in your `config\default.json` file. A sample can be seen
   "oauth": {
     "clientId": "swagger",
     "securityDefinition": {
-      "authorizationUrl": "https://identityprovider/connect/authorize",
+      "authorizationUrl": "https://identityprovider/{{tenant_id}}/connect/authorize",
       "flow": "implicit",
       "scopes": {
         "api": "Full API Access"
       },
-      "tokenUrl": "https://identityprovider/connect/token",
+      "tokenUrl": "https://identityprovider/{{tenant_id}}/connect/token",
       "type": "oauth2"
     }
   }
@@ -78,6 +78,10 @@ The `info` node stores top-level document information that will appear both in t
 ### OAuth Configuration
 
 The optional `oauth` node allows you to configure an OAuth provider that can be used to authenticate. It is assumed all REST services under the API gateway trust the identity provider, allow the same set of scopes, etc.
+
+### Placeholder Text
+
+Note the `{{handlebars}}` style placeholder in the OAuth URLs in the sample. Any `{{handlebars}}` item will be replaced with a value from the query string passed to `/swagger.json`. In the case of the example, `/swagger.json?tenant_id=12345` will update the security definition URLs so the `{{tenant_id}}` is replaced with `12345`.
 
 ## Deploy to PCF
 
